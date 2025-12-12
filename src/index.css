@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap');
+
+@import "tailwindcss";
+
+*::-webkit-scrollbar {
+    width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--color-zinc-900);
+    border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--color-zinc-700);
+    border-radius: 14px;
+    border: 3px solid var(--color-zinc-900);
+}
+
+html {
+    @apply bg-zinc-900 text-zinc-50;
+}
+
+@theme {
+    --font-serif: 'Geist', sans-serif;
+    --font-mono: 'Geist Mono', monospace;
+}

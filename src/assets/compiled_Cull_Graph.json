@@ -1,0 +1,1316 @@
+{
+    "inputGraphName": "Cull Graph",
+    "messages": [
+        "[Step 1] No unreachable nodes were found.",
+        "[RenderGraph] ================={ Resource Optimizer Start }=================",
+        "[RenderGraph] Created new resource [id=92, type=SceneData, opt=no]",
+        "[RenderGraph] Created new resource [id=93, type=Buffer, opt=no]",
+        "[RenderGraph] Created new resource [id=94, type=Buffer, opt=no]",
+        "[RenderGraph] Created new resource (could not be optimized) [id=95, type=Image]",
+        "[RenderGraph] Created new resource (could not be optimized) [id=96, type=Image]",
+        "[RenderGraph] Created new resource (could not be optimized) [id=97, type=Image]",
+        "[RenderGraph] Created new resource (could not be optimized) [id=98, type=Image]",
+        "[RenderGraph] Created new resource (could not be optimized) [id=99, type=Image]",
+        "[RenderGraph] Resource [id=95, type=Image] was reused in range [6, 7] with 2 usage points.",
+        "[RenderGraph] Resource [id=96, type=Image] was reused in range [7, 8] with 2 usage points.",
+        "[RenderGraph] =================={ Resource Optimizer End }=================="
+    ],
+    "nodeExecutionOrder": [
+        {
+            "dependencies": [
+                {
+                    "dependencyType": 1,
+                    "dontOptimize": false,
+                    "id": 9,
+                    "name": "Scene Data",
+                    "resourceType": "SceneData"
+                }
+            ],
+            "displayName": "Source",
+            "gridPos": [
+                85.0,
+                365.0
+            ],
+            "id": 0,
+            "incomingNodeIds": [],
+            "nodeType": "Scene",
+            "outgoingNodeIds": [
+                1,
+                2,
+                7,
+                1,
+                2,
+                7
+            ],
+            "subTitle": ""
+        },
+        {
+            "dependencies": [
+                {
+                    "dependencyType": 2,
+                    "dontOptimize": false,
+                    "id": 29,
+                    "name": "Scene Data",
+                    "resourceType": "SceneData"
+                },
+                {
+                    "dependencyType": 3,
+                    "dontOptimize": false,
+                    "id": 30,
+                    "name": "Scene Buffer",
+                    "resourceType": "Buffer"
+                }
+            ],
+            "displayName": "Make Scene Data buffer",
+            "gridPos": [
+                202.0,
+                164.0
+            ],
+            "id": 7,
+            "incomingNodeIds": [
+                0,
+                0
+            ],
+            "nodeType": "DataBufferPass",
+            "outgoingNodeIds": [
+                8,
+                8
+            ],
+            "subTitle": ""
+        },
+        {
+            "dependencies": [
+                {
+                    "dependencyType": 2,
+                    "dontOptimize": false,
+                    "id": 31,
+                    "name": "Input Buffer",
+                    "resourceType": "Buffer"
+                },
+                {
+                    "dependencyType": 3,
+                    "dontOptimize": false,
+                    "id": 32,
+                    "name": "Output Buffer",
+                    "resourceType": "Buffer"
+                }
+            ],
+            "displayName": "Cull Objects",
+            "gridPos": [
+                416.0,
+                138.0
+            ],
+            "id": 8,
+            "incomingNodeIds": [
+                7,
+                7
+            ],
+            "nodeType": "CullPass",
+            "outgoingNodeIds": [
+                6,
+                6
+            ],
+            "subTitle": ""
+        },
+        {
+            "dependencies": [
+                {
+                    "dependencyType": 2,
+                    "dontOptimize": false,
+                    "id": 25,
+                    "name": "Indirect Buffer",
+                    "resourceType": "Buffer"
+                },
+                {
+                    "dependencyType": 3,
+                    "dontOptimize": false,
+                    "id": 26,
+                    "name": "Position Buffer",
+                    "resourceParams": {
+                        "imageUsage": "ColorAttachment",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                },
+                {
+                    "dependencyType": 3,
+                    "dontOptimize": false,
+                    "id": 27,
+                    "name": "Normal Buffer",
+                    "resourceParams": {
+                        "imageUsage": "ColorAttachment",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                },
+                {
+                    "dependencyType": 3,
+                    "dontOptimize": false,
+                    "id": 28,
+                    "name": "Albedo Buffer",
+                    "resourceParams": {
+                        "imageUsage": "ColorAttachment",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                }
+            ],
+            "displayName": "G-Buffer Pass",
+            "gridPos": [
+                563.0,
+                110.0
+            ],
+            "id": 6,
+            "incomingNodeIds": [
+                8,
+                8
+            ],
+            "nodeType": "GBufferPass",
+            "outgoingNodeIds": [
+                2,
+                2,
+                1,
+                1,
+                2,
+                2,
+                2,
+                1,
+                1,
+                2
+            ],
+            "subTitle": ""
+        },
+        {
+            "dependencies": [
+                {
+                    "dependencyType": 2,
+                    "dontOptimize": false,
+                    "id": 10,
+                    "name": "Position Buffer",
+                    "resourceParams": {
+                        "imageUsage": "StorageImage",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                },
+                {
+                    "dependencyType": 2,
+                    "dontOptimize": false,
+                    "id": 11,
+                    "name": "Normal Buffer",
+                    "resourceParams": {
+                        "imageUsage": "StorageImage",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                },
+                {
+                    "dependencyType": 2,
+                    "dontOptimize": false,
+                    "id": 12,
+                    "name": "Scene TLAS",
+                    "resourceType": "SceneData"
+                },
+                {
+                    "dependencyType": 3,
+                    "dontOptimize": false,
+                    "id": 13,
+                    "name": "AO Buffer",
+                    "resourceParams": {
+                        "imageUsage": "StorageImage",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                }
+            ],
+            "displayName": "Ambient Occlusion",
+            "gridPos": [
+                811.0,
+                308.0
+            ],
+            "id": 1,
+            "incomingNodeIds": [
+                0,
+                6,
+                6,
+                0,
+                6,
+                6
+            ],
+            "nodeType": "AmbientOcclusionPass",
+            "outgoingNodeIds": [
+                3,
+                3
+            ],
+            "subTitle": "Mode: RTAO"
+        },
+        {
+            "dependencies": [
+                {
+                    "dependencyType": 2,
+                    "dontOptimize": false,
+                    "id": 14,
+                    "name": "Position Buffer",
+                    "resourceParams": {
+                        "imageUsage": "ShaderReadOnly",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                },
+                {
+                    "dependencyType": 2,
+                    "dontOptimize": false,
+                    "id": 15,
+                    "name": "Normal Buffer",
+                    "resourceParams": {
+                        "imageUsage": "ShaderReadOnly",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                },
+                {
+                    "dependencyType": 2,
+                    "dontOptimize": false,
+                    "id": 16,
+                    "name": "Albedo Buffer",
+                    "resourceParams": {
+                        "imageUsage": "ShaderReadOnly",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                },
+                {
+                    "dependencyType": 2,
+                    "dontOptimize": false,
+                    "id": 17,
+                    "name": "Scene TLAS",
+                    "resourceType": "SceneData"
+                },
+                {
+                    "dependencyType": 3,
+                    "dontOptimize": false,
+                    "id": 18,
+                    "name": "Lighting Result",
+                    "resourceParams": {
+                        "imageUsage": "ColorAttachment",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                }
+            ],
+            "displayName": "Lighting Pass",
+            "gridPos": [
+                811.0,
+                143.0
+            ],
+            "id": 2,
+            "incomingNodeIds": [
+                0,
+                6,
+                6,
+                6,
+                0,
+                6,
+                6,
+                6
+            ],
+            "nodeType": "LightingPass",
+            "outgoingNodeIds": [
+                4,
+                4
+            ],
+            "subTitle": ""
+        },
+        {
+            "dependencies": [
+                {
+                    "dependencyType": 2,
+                    "dontOptimize": false,
+                    "id": 22,
+                    "name": "AA Input",
+                    "resourceParams": {
+                        "imageUsage": "ShaderReadOnly",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                },
+                {
+                    "dependencyType": 3,
+                    "dontOptimize": false,
+                    "id": 23,
+                    "name": "AA Output",
+                    "resourceParams": {
+                        "imageUsage": "ColorAttachment",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                }
+            ],
+            "displayName": "Anti-Aliasing",
+            "gridPos": [
+                988.0,
+                194.0
+            ],
+            "id": 4,
+            "incomingNodeIds": [
+                2,
+                2
+            ],
+            "nodeType": "AntiAliasingPass",
+            "outgoingNodeIds": [
+                3,
+                3
+            ],
+            "subTitle": "Mode: FXAA"
+        },
+        {
+            "dependencies": [
+                {
+                    "dependencyType": 2,
+                    "dontOptimize": false,
+                    "id": 19,
+                    "name": "A",
+                    "resourceParams": {
+                        "imageUsage": "ShaderReadOnly",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                },
+                {
+                    "dependencyType": 2,
+                    "dontOptimize": false,
+                    "id": 20,
+                    "name": "B",
+                    "resourceParams": {
+                        "imageUsage": "ShaderReadOnly",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                },
+                {
+                    "dependencyType": 3,
+                    "dontOptimize": false,
+                    "id": 21,
+                    "name": "Out",
+                    "resourceParams": {
+                        "imageUsage": "ColorAttachment",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                }
+            ],
+            "displayName": "Combine",
+            "gridPos": [
+                1167.0,
+                229.0
+            ],
+            "id": 3,
+            "incomingNodeIds": [
+                1,
+                4,
+                1,
+                4
+            ],
+            "nodeType": "CombinePass",
+            "outgoingNodeIds": [
+                5,
+                5
+            ],
+            "subTitle": "Mode: Add"
+        },
+        {
+            "dependencies": [
+                {
+                    "dependencyType": 2,
+                    "dontOptimize": false,
+                    "id": 24,
+                    "name": "PresentSrc",
+                    "resourceParams": {
+                        "imageUsage": "ColorAttachment",
+                        "sType": "ImageInfo"
+                    },
+                    "resourceType": "Image"
+                }
+            ],
+            "displayName": "Present",
+            "gridPos": [
+                1291.0,
+                253.0
+            ],
+            "id": 5,
+            "incomingNodeIds": [
+                3,
+                3
+            ],
+            "nodeType": "Present",
+            "outgoingNodeIds": [],
+            "subTitle": ""
+        }
+    ],
+    "optimizerResultMeta": {
+        "messages": [
+            "[RenderGraph] ================={ Resource Optimizer Start }=================",
+            "[RenderGraph] Created new resource [id=92, type=SceneData, opt=no]",
+            "[RenderGraph] Created new resource [id=93, type=Buffer, opt=no]",
+            "[RenderGraph] Created new resource [id=94, type=Buffer, opt=no]",
+            "[RenderGraph] Created new resource (could not be optimized) [id=95, type=Image]",
+            "[RenderGraph] Created new resource (could not be optimized) [id=96, type=Image]",
+            "[RenderGraph] Created new resource (could not be optimized) [id=97, type=Image]",
+            "[RenderGraph] Created new resource (could not be optimized) [id=98, type=Image]",
+            "[RenderGraph] Created new resource (could not be optimized) [id=99, type=Image]",
+            "[RenderGraph] Resource [id=95, type=Image] was reused in range [6, 7] with 2 usage points.",
+            "[RenderGraph] Resource [id=96, type=Image] was reused in range [7, 8] with 2 usage points.",
+            "[RenderGraph] =================={ Resource Optimizer End }=================="
+        ],
+        "nNonOptimizable": 3,
+        "nOriginalCount": 10,
+        "nReduction": 2,
+        "originalResources": [
+            {
+                "consumeIdx": 0,
+                "consumers": [
+                    {
+                        "consumeIdx": 4,
+                        "depId": 12,
+                        "depName": "Scene TLAS"
+                    },
+                    {
+                        "consumeIdx": 5,
+                        "depId": 17,
+                        "depName": "Scene TLAS"
+                    },
+                    {
+                        "consumeIdx": 1,
+                        "depId": 29,
+                        "depName": "Scene Data"
+                    }
+                ],
+                "initDepType": 1,
+                "isOptimizable": false,
+                "originalDepId": 9,
+                "originalDepName": "Scene Data",
+                "resourceType": "SceneData"
+            },
+            {
+                "consumeIdx": 1,
+                "consumers": [
+                    {
+                        "consumeIdx": 2,
+                        "depId": 31,
+                        "depName": "Input Buffer"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": false,
+                "originalDepId": 30,
+                "originalDepName": "Scene Buffer",
+                "resourceType": "Buffer"
+            },
+            {
+                "consumeIdx": 2,
+                "consumers": [
+                    {
+                        "consumeIdx": 3,
+                        "depId": 25,
+                        "depName": "Indirect Buffer"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": false,
+                "originalDepId": 32,
+                "originalDepName": "Output Buffer",
+                "resourceType": "Buffer"
+            },
+            {
+                "consumeIdx": 3,
+                "consumers": [
+                    {
+                        "consumeIdx": 5,
+                        "depId": 14,
+                        "depName": "Position Buffer"
+                    },
+                    {
+                        "consumeIdx": 4,
+                        "depId": 10,
+                        "depName": "Position Buffer"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": true,
+                "originalDepId": 26,
+                "originalDepName": "Position Buffer",
+                "resourceType": "Image"
+            },
+            {
+                "consumeIdx": 3,
+                "consumers": [
+                    {
+                        "consumeIdx": 5,
+                        "depId": 15,
+                        "depName": "Normal Buffer"
+                    },
+                    {
+                        "consumeIdx": 4,
+                        "depId": 11,
+                        "depName": "Normal Buffer"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": true,
+                "originalDepId": 27,
+                "originalDepName": "Normal Buffer",
+                "resourceType": "Image"
+            },
+            {
+                "consumeIdx": 3,
+                "consumers": [
+                    {
+                        "consumeIdx": 5,
+                        "depId": 16,
+                        "depName": "Albedo Buffer"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": true,
+                "originalDepId": 28,
+                "originalDepName": "Albedo Buffer",
+                "resourceType": "Image"
+            },
+            {
+                "consumeIdx": 4,
+                "consumers": [
+                    {
+                        "consumeIdx": 7,
+                        "depId": 20,
+                        "depName": "B"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": true,
+                "originalDepId": 13,
+                "originalDepName": "AO Buffer",
+                "resourceType": "Image"
+            },
+            {
+                "consumeIdx": 5,
+                "consumers": [
+                    {
+                        "consumeIdx": 6,
+                        "depId": 22,
+                        "depName": "AA Input"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": true,
+                "originalDepId": 18,
+                "originalDepName": "Lighting Result",
+                "resourceType": "Image"
+            },
+            {
+                "consumeIdx": 6,
+                "consumers": [
+                    {
+                        "consumeIdx": 7,
+                        "depId": 19,
+                        "depName": "A"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": true,
+                "originalDepId": 23,
+                "originalDepName": "AA Output",
+                "resourceType": "Image"
+            },
+            {
+                "consumeIdx": 7,
+                "consumers": [
+                    {
+                        "consumeIdx": 8,
+                        "depId": 24,
+                        "depName": "PresentSrc"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": true,
+                "originalDepId": 21,
+                "originalDepName": "Out",
+                "resourceType": "Image"
+            }
+        ],
+        "timelineRange": {
+            "end": 8,
+            "start": 0
+        }
+    },
+    "resourceTemplates": [
+        {
+            "id": 92,
+            "originalResource": {
+                "consumeIdx": 0,
+                "consumers": [
+                    {
+                        "consumeIdx": 4,
+                        "depId": 12,
+                        "depName": "Scene TLAS"
+                    },
+                    {
+                        "consumeIdx": 5,
+                        "depId": 17,
+                        "depName": "Scene TLAS"
+                    },
+                    {
+                        "consumeIdx": 1,
+                        "depId": 29,
+                        "depName": "Scene Data"
+                    }
+                ],
+                "initDepType": 1,
+                "isOptimizable": false,
+                "originalDepId": 9,
+                "originalDepName": "Scene Data",
+                "resourceType": "SceneData"
+            },
+            "resourceType": "SceneData",
+            "usagePoints": [
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 1,
+                        "dontOptimize": false,
+                        "id": 9,
+                        "name": "Scene Data",
+                        "resourceType": "SceneData"
+                    },
+                    "memoryRequirement": "0",
+                    "point": 0,
+                    "usedAs": "Scene Data",
+                    "usedBy": "Source",
+                    "userDependencyId": 9,
+                    "userNodeId": 0
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 2,
+                        "dontOptimize": false,
+                        "id": 29,
+                        "name": "Scene Data",
+                        "resourceType": "SceneData"
+                    },
+                    "memoryRequirement": "0",
+                    "point": 1,
+                    "usedAs": "Scene Data",
+                    "usedBy": "Make Scene Data buffer",
+                    "userDependencyId": 29,
+                    "userNodeId": 7
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 2,
+                        "dontOptimize": false,
+                        "id": 12,
+                        "name": "Scene TLAS",
+                        "resourceType": "SceneData"
+                    },
+                    "memoryRequirement": "0",
+                    "point": 4,
+                    "usedAs": "Scene TLAS",
+                    "usedBy": "Ambient Occlusion",
+                    "userDependencyId": 12,
+                    "userNodeId": 1
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 2,
+                        "dontOptimize": false,
+                        "id": 17,
+                        "name": "Scene TLAS",
+                        "resourceType": "SceneData"
+                    },
+                    "memoryRequirement": "0",
+                    "point": 5,
+                    "usedAs": "Scene TLAS",
+                    "usedBy": "Lighting Pass",
+                    "userDependencyId": 17,
+                    "userNodeId": 2
+                }
+            ],
+            "usageRanges": [
+                {
+                    "end": 5,
+                    "start": 0
+                }
+            ]
+        },
+        {
+            "id": 93,
+            "originalResource": {
+                "consumeIdx": 1,
+                "consumers": [
+                    {
+                        "consumeIdx": 2,
+                        "depId": 31,
+                        "depName": "Input Buffer"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": false,
+                "originalDepId": 30,
+                "originalDepName": "Scene Buffer",
+                "resourceType": "Buffer"
+            },
+            "resourceType": "Buffer",
+            "usagePoints": [
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 3,
+                        "dontOptimize": false,
+                        "id": 30,
+                        "name": "Scene Buffer",
+                        "resourceType": "Buffer"
+                    },
+                    "memoryRequirement": "120",
+                    "point": 1,
+                    "usedAs": "Scene Buffer",
+                    "usedBy": "Make Scene Data buffer",
+                    "userDependencyId": 30,
+                    "userNodeId": 7
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 2,
+                        "dontOptimize": false,
+                        "id": 31,
+                        "name": "Input Buffer",
+                        "resourceType": "Buffer"
+                    },
+                    "memoryRequirement": "120",
+                    "point": 2,
+                    "usedAs": "Input Buffer",
+                    "usedBy": "Cull Objects",
+                    "userDependencyId": 31,
+                    "userNodeId": 8
+                }
+            ],
+            "usageRanges": [
+                {
+                    "end": 2,
+                    "start": 1
+                }
+            ]
+        },
+        {
+            "id": 94,
+            "originalResource": {
+                "consumeIdx": 2,
+                "consumers": [
+                    {
+                        "consumeIdx": 3,
+                        "depId": 25,
+                        "depName": "Indirect Buffer"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": false,
+                "originalDepId": 32,
+                "originalDepName": "Output Buffer",
+                "resourceType": "Buffer"
+            },
+            "resourceType": "Buffer",
+            "usagePoints": [
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 3,
+                        "dontOptimize": false,
+                        "id": 32,
+                        "name": "Output Buffer",
+                        "resourceType": "Buffer"
+                    },
+                    "memoryRequirement": "120",
+                    "point": 2,
+                    "usedAs": "Output Buffer",
+                    "usedBy": "Cull Objects",
+                    "userDependencyId": 32,
+                    "userNodeId": 8
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 2,
+                        "dontOptimize": false,
+                        "id": 25,
+                        "name": "Indirect Buffer",
+                        "resourceType": "Buffer"
+                    },
+                    "memoryRequirement": "120",
+                    "point": 3,
+                    "usedAs": "Indirect Buffer",
+                    "usedBy": "G-Buffer Pass",
+                    "userDependencyId": 25,
+                    "userNodeId": 6
+                }
+            ],
+            "usageRanges": [
+                {
+                    "end": 3,
+                    "start": 2
+                }
+            ]
+        },
+        {
+            "id": 95,
+            "originalResource": {
+                "consumeIdx": 3,
+                "consumers": [
+                    {
+                        "consumeIdx": 5,
+                        "depId": 14,
+                        "depName": "Position Buffer"
+                    },
+                    {
+                        "consumeIdx": 4,
+                        "depId": 10,
+                        "depName": "Position Buffer"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": true,
+                "originalDepId": 26,
+                "originalDepName": "Position Buffer",
+                "resourceType": "Image"
+            },
+            "resourceType": "Image",
+            "usagePoints": [
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 3,
+                        "dontOptimize": false,
+                        "id": 26,
+                        "name": "Position Buffer",
+                        "resourceParams": {
+                            "imageUsage": "ColorAttachment",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 3,
+                    "usedAs": "Position Buffer",
+                    "usedBy": "G-Buffer Pass",
+                    "userDependencyId": 26,
+                    "userNodeId": 6
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 2,
+                        "dontOptimize": false,
+                        "id": 10,
+                        "name": "Position Buffer",
+                        "resourceParams": {
+                            "imageUsage": "StorageImage",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 4,
+                    "usedAs": "Position Buffer",
+                    "usedBy": "Ambient Occlusion",
+                    "userDependencyId": 10,
+                    "userNodeId": 1
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 2,
+                        "dontOptimize": false,
+                        "id": 14,
+                        "name": "Position Buffer",
+                        "resourceParams": {
+                            "imageUsage": "ShaderReadOnly",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 5,
+                    "usedAs": "Position Buffer",
+                    "usedBy": "Lighting Pass",
+                    "userDependencyId": 14,
+                    "userNodeId": 2
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 3,
+                        "dontOptimize": false,
+                        "id": 23,
+                        "name": "AA Output",
+                        "resourceParams": {
+                            "imageUsage": "ColorAttachment",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 6,
+                    "usedAs": "AA Output",
+                    "usedBy": "Anti-Aliasing",
+                    "userDependencyId": 23,
+                    "userNodeId": 4
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 2,
+                        "dontOptimize": false,
+                        "id": 19,
+                        "name": "A",
+                        "resourceParams": {
+                            "imageUsage": "ShaderReadOnly",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 7,
+                    "usedAs": "A",
+                    "usedBy": "Combine",
+                    "userDependencyId": 19,
+                    "userNodeId": 3
+                }
+            ],
+            "usageRanges": [
+                {
+                    "end": 5,
+                    "start": 3
+                },
+                {
+                    "end": 7,
+                    "start": 6
+                }
+            ]
+        },
+        {
+            "id": 96,
+            "originalResource": {
+                "consumeIdx": 3,
+                "consumers": [
+                    {
+                        "consumeIdx": 5,
+                        "depId": 15,
+                        "depName": "Normal Buffer"
+                    },
+                    {
+                        "consumeIdx": 4,
+                        "depId": 11,
+                        "depName": "Normal Buffer"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": true,
+                "originalDepId": 27,
+                "originalDepName": "Normal Buffer",
+                "resourceType": "Image"
+            },
+            "resourceType": "Image",
+            "usagePoints": [
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 3,
+                        "dontOptimize": false,
+                        "id": 27,
+                        "name": "Normal Buffer",
+                        "resourceParams": {
+                            "imageUsage": "ColorAttachment",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 3,
+                    "usedAs": "Normal Buffer",
+                    "usedBy": "G-Buffer Pass",
+                    "userDependencyId": 27,
+                    "userNodeId": 6
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 2,
+                        "dontOptimize": false,
+                        "id": 11,
+                        "name": "Normal Buffer",
+                        "resourceParams": {
+                            "imageUsage": "StorageImage",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 4,
+                    "usedAs": "Normal Buffer",
+                    "usedBy": "Ambient Occlusion",
+                    "userDependencyId": 11,
+                    "userNodeId": 1
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 2,
+                        "dontOptimize": false,
+                        "id": 15,
+                        "name": "Normal Buffer",
+                        "resourceParams": {
+                            "imageUsage": "ShaderReadOnly",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 5,
+                    "usedAs": "Normal Buffer",
+                    "usedBy": "Lighting Pass",
+                    "userDependencyId": 15,
+                    "userNodeId": 2
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 3,
+                        "dontOptimize": false,
+                        "id": 21,
+                        "name": "Out",
+                        "resourceParams": {
+                            "imageUsage": "ColorAttachment",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 7,
+                    "usedAs": "Out",
+                    "usedBy": "Combine",
+                    "userDependencyId": 21,
+                    "userNodeId": 3
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 2,
+                        "dontOptimize": false,
+                        "id": 24,
+                        "name": "PresentSrc",
+                        "resourceParams": {
+                            "imageUsage": "ColorAttachment",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 8,
+                    "usedAs": "PresentSrc",
+                    "usedBy": "Present",
+                    "userDependencyId": 24,
+                    "userNodeId": 5
+                }
+            ],
+            "usageRanges": [
+                {
+                    "end": 5,
+                    "start": 3
+                },
+                {
+                    "end": 8,
+                    "start": 7
+                }
+            ]
+        },
+        {
+            "id": 97,
+            "originalResource": {
+                "consumeIdx": 3,
+                "consumers": [
+                    {
+                        "consumeIdx": 5,
+                        "depId": 16,
+                        "depName": "Albedo Buffer"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": true,
+                "originalDepId": 28,
+                "originalDepName": "Albedo Buffer",
+                "resourceType": "Image"
+            },
+            "resourceType": "Image",
+            "usagePoints": [
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 3,
+                        "dontOptimize": false,
+                        "id": 28,
+                        "name": "Albedo Buffer",
+                        "resourceParams": {
+                            "imageUsage": "ColorAttachment",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 3,
+                    "usedAs": "Albedo Buffer",
+                    "usedBy": "G-Buffer Pass",
+                    "userDependencyId": 28,
+                    "userNodeId": 6
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 2,
+                        "dontOptimize": false,
+                        "id": 16,
+                        "name": "Albedo Buffer",
+                        "resourceParams": {
+                            "imageUsage": "ShaderReadOnly",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 5,
+                    "usedAs": "Albedo Buffer",
+                    "usedBy": "Lighting Pass",
+                    "userDependencyId": 16,
+                    "userNodeId": 2
+                }
+            ],
+            "usageRanges": [
+                {
+                    "end": 5,
+                    "start": 3
+                }
+            ]
+        },
+        {
+            "id": 98,
+            "originalResource": {
+                "consumeIdx": 4,
+                "consumers": [
+                    {
+                        "consumeIdx": 7,
+                        "depId": 20,
+                        "depName": "B"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": true,
+                "originalDepId": 13,
+                "originalDepName": "AO Buffer",
+                "resourceType": "Image"
+            },
+            "resourceType": "Image",
+            "usagePoints": [
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 3,
+                        "dontOptimize": false,
+                        "id": 13,
+                        "name": "AO Buffer",
+                        "resourceParams": {
+                            "imageUsage": "StorageImage",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "8.85",
+                    "point": 4,
+                    "usedAs": "AO Buffer",
+                    "usedBy": "Ambient Occlusion",
+                    "userDependencyId": 13,
+                    "userNodeId": 1
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 2,
+                        "dontOptimize": false,
+                        "id": 20,
+                        "name": "B",
+                        "resourceParams": {
+                            "imageUsage": "ShaderReadOnly",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 7,
+                    "usedAs": "B",
+                    "usedBy": "Combine",
+                    "userDependencyId": 20,
+                    "userNodeId": 3
+                }
+            ],
+            "usageRanges": [
+                {
+                    "end": 7,
+                    "start": 4
+                }
+            ]
+        },
+        {
+            "id": 99,
+            "originalResource": {
+                "consumeIdx": 5,
+                "consumers": [
+                    {
+                        "consumeIdx": 6,
+                        "depId": 22,
+                        "depName": "AA Input"
+                    }
+                ],
+                "initDepType": 3,
+                "isOptimizable": true,
+                "originalDepId": 18,
+                "originalDepName": "Lighting Result",
+                "resourceType": "Image"
+            },
+            "resourceType": "Image",
+            "usagePoints": [
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 3,
+                        "dontOptimize": false,
+                        "id": 18,
+                        "name": "Lighting Result",
+                        "resourceParams": {
+                            "imageUsage": "ColorAttachment",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 5,
+                    "usedAs": "Lighting Result",
+                    "usedBy": "Lighting Pass",
+                    "userDependencyId": 18,
+                    "userNodeId": 2
+                },
+                {
+                    "dependencyInfo": {
+                        "dependencyType": 2,
+                        "dontOptimize": false,
+                        "id": 22,
+                        "name": "AA Input",
+                        "resourceParams": {
+                            "imageUsage": "ShaderReadOnly",
+                            "sType": "ImageInfo"
+                        },
+                        "resourceType": "Image"
+                    },
+                    "memoryRequirement": "34.5",
+                    "point": 6,
+                    "usedAs": "AA Input",
+                    "usedBy": "Anti-Aliasing",
+                    "userDependencyId": 22,
+                    "userNodeId": 4
+                }
+            ],
+            "usageRanges": [
+                {
+                    "end": 6,
+                    "start": 5
+                }
+            ]
+        }
+    ],
+    "success": true
+}
